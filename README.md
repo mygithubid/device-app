@@ -5,8 +5,9 @@ The DEVICE-APP is a simple application that allows maintenance of devices.
 
 It is a Spring Boot application that uses Hibernate JPA to store messages in a PostgreSQL database, aided by Flyway
 
+A Makefile allows easy dockerization:
 jar:
-    ./mvnw package -DskipTests
+    mvn package -DskipTests
 
 build:
     docker compose build
