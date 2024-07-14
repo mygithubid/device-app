@@ -47,6 +47,41 @@ class DeviceResourceTest extends AbstractDeviceAppResourceTest {
     }
 
     @Test
+    public void updateDeviceSuccess() throws Exception {
+        var deviceJson = """
+                {
+                  "name": "string",
+                  "brand": "string"
+                }
+                """;
+        when(findDeviceById.query(any())).thenReturn(
+                Optional.of(new Device(
+                        1L,
+                        "string",
+                        "string",
+                        LocalDateTime.now()
+                ))
+        );
+        when(updateDevice.execute(any())).thenReturn(
+                new Device(
+                        1L,
+                        "string",
+                        "string",
+                        LocalDateTime.now()
+                )
+        );
+        var mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders
+                        .put("/device/1")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(deviceJson))
+                .andReturn();
+        var status = mvcResult.getResponse().getStatus();
+        assertEquals(HttpStatus.OK.value(), status);
+    }
+
+    @Test
     void findByIdSuccess() throws Exception {
         when(findDeviceById.query(any())).thenReturn(
                 Optional.of(new Device(
@@ -87,6 +122,33 @@ class DeviceResourceTest extends AbstractDeviceAppResourceTest {
         MvcResult mvcResult = mockMvc
                 .perform(MockMvcRequestBuilders
                         .get("/device/list")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        int status = mvcResult
+                .getResponse()
+                .getStatus();
+        assertEquals(HttpStatus.OK.value(), status);
+        String content = mvcResult
+                .getResponse()
+                .getContentAsString();
+        assertNotNull(content);
+    }
+
+    @Test
+    void findByBrandSuccess() throws Exception {
+        when(findByBrand.query(any())).thenReturn(
+                List.of(new Device(
+                                1L,
+                                "string",
+                                "string",
+                                LocalDateTime.now()
+                        )
+                )
+        );
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders
+                        .get("/device/bybrand/aBrand")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
 

@@ -3,7 +3,9 @@ package com.joel.device.adapter.rest.resource;
 import com.joel.device.app.Starter;
 import com.joel.device.domain.usecase.device.create.Create;
 import com.joel.device.domain.usecase.device.findall.FindAll;
+import com.joel.device.domain.usecase.device.findbybrand.FindByBrand;
 import com.joel.device.domain.usecase.device.findbyid.FindById;
+import com.joel.device.domain.usecase.device.update.Update;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,14 @@ public abstract class AbstractDeviceAppResourceTest {
 
     @MockBean
     protected FindById findDeviceById;
-
     @MockBean
     protected FindAll findAllDevices;
-
     @MockBean
     protected Create createDevice;
+    @MockBean
+    protected Update updateDevice;
+    @MockBean
+    protected FindByBrand findByBrand;
 
     @BeforeEach
     public void init() {

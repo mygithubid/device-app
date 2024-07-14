@@ -1,4 +1,4 @@
-# chat-app
+# device-app
 
 
 The DEVICE-APP is a simple application that allows maintenance of devices.
@@ -15,5 +15,3 @@ up:
     docker compose up
 
 Flyway will create the necessary tables in the database
-
-Swagger: http://localhost:8080/swagger-ui/index.html
