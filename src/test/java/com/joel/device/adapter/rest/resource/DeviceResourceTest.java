@@ -75,7 +75,7 @@ class DeviceResourceTest extends AbstractDeviceAppResourceTest {
 
     @Test
     void findByAllSuccess() throws Exception {
-        when(findAllUsers.query()).thenReturn(
+        when(findAllDevices.query()).thenReturn(
                 List.of(new Device(
                                 1L,
                                 "string",

@@ -6,7 +6,6 @@ import com.joel.device.domain.usecase.device.findall.FindAll;
 import com.joel.device.domain.usecase.device.findbybrand.FindByBrand;
 import com.joel.device.domain.usecase.device.findbyid.FindById;
 import com.joel.device.domain.usecase.device.update.Update;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/device")
-@RequiredArgsConstructor
 public class DeviceResource {
 
     private final FindById findById;
@@ -23,6 +21,14 @@ public class DeviceResource {
     private final Create create;
     private final Update update;
     private final FindByBrand findByBrand;
+
+    public DeviceResource(FindById findById, FindAll findAll, Create create, Update update, FindByBrand findByBrand) {
+        this.findById = findById;
+        this.findAll = findAll;
+        this.create = create;
+        this.update = update;
+        this.findByBrand = findByBrand;
+    }
 
 
     @GetMapping("/{id}")

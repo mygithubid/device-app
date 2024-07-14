@@ -2,16 +2,18 @@ package com.joel.device.domain.usecase.device.findall;
 
 import com.joel.device.domain.usecase.device.gateway.DeviceGateway;
 import com.joel.device.domain.usecase.device.model.Device;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor
 public class FindAllImpl implements FindAll {
 
     private final DeviceGateway deviceGateway;
+
+    public FindAllImpl(DeviceGateway deviceGateway) {
+        this.deviceGateway = deviceGateway;
+    }
 
 
     @Override

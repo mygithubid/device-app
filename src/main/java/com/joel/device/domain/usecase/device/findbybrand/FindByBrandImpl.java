@@ -1,18 +1,19 @@
 package com.joel.device.domain.usecase.device.findbybrand;
 
-import com.joel.device.domain.usecase.device.findall.FindAll;
 import com.joel.device.domain.usecase.device.gateway.DeviceGateway;
 import com.joel.device.domain.usecase.device.model.Device;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-@RequiredArgsConstructor
+@Component("com.joel.device.domain.usecase.device.findbyid.FindByBrandImpl")
 public class FindByBrandImpl implements FindByBrand {
 
     private final DeviceGateway deviceGateway;
+
+    public FindByBrandImpl(DeviceGateway deviceGateway) {
+        this.deviceGateway = deviceGateway;
+    }
 
 
     @Override

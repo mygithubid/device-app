@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
-@SpringBootTest(classes = Starter.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = Starter.class)
 @AutoConfigureMockMvc
+@TestPropertySource(
+        locations = "classpath:application-integrationtest.properties")
 public abstract class AbstractDeviceAppResourceTest {
-
     @Autowired
     protected MockMvc mockMvc;
 
@@ -23,7 +25,7 @@ public abstract class AbstractDeviceAppResourceTest {
     protected FindById findDeviceById;
 
     @MockBean
-    protected FindAll findAllUsers;
+    protected FindAll findAllDevices;
 
     @MockBean
     protected Create createDevice;

@@ -1,18 +1,17 @@
 package com.joel.device.domain.usecase.device.update;
 
-import com.joel.device.domain.usecase.device.create.Create;
 import com.joel.device.domain.usecase.device.gateway.DeviceGateway;
 import com.joel.device.domain.usecase.device.model.Device;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-
-@Component("com.joel.device.domain.usecase.device.create.CreateImpl")
-@RequiredArgsConstructor
+@Component("com.joel.device.domain.usecase.device.create.UpdateImpl")
 public class UpdateImpl implements Update {
 
     private final DeviceGateway deviceGateway;
+
+    public UpdateImpl(DeviceGateway deviceGateway) {
+        this.deviceGateway = deviceGateway;
+    }
 
     @Override
     public Device execute(Device device) {

@@ -2,16 +2,18 @@ package com.joel.device.domain.usecase.device.findbyid;
 
 import com.joel.device.domain.usecase.device.gateway.DeviceGateway;
 import com.joel.device.domain.usecase.device.model.Device;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component("com.joel.device.domain.usecase.device.findbyid.FindByIdImpl")
-@RequiredArgsConstructor
 public class FindByIdImpl implements FindById {
 
     private final DeviceGateway deviceGateway;
+
+    public FindByIdImpl(DeviceGateway deviceGateway) {
+        this.deviceGateway = deviceGateway;
+    }
 
     @Override
     public Optional<Device> query(Long id) {

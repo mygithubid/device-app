@@ -26,11 +26,11 @@ class DeviceJPAGatewayTest {
 
     @Test
     void findById() {
-        var entity = Device.builder()
-                .id(1L)
-                .name("name")
-                .brand("brand")
-                .build();
+        var entity = new Device(
+                1L,
+                "name",
+                "brand",
+                null);
         when(repository.findById(1L)).thenReturn(Optional.of(entity));
 
         var user = gateway.findById(1L);
@@ -50,11 +50,11 @@ class DeviceJPAGatewayTest {
 
     @Test
     void findAll() {
-        var entity = Device.builder()
-                .id(1L)
-                .name("name")
-                .brand("brand")
-                .build();
+        var entity = new Device(
+                1L,
+                "name",
+                "brand",
+                null);
         when(repository.findAll()).thenReturn(List.of(entity));
 
         var devices = gateway.findAll();
@@ -74,11 +74,11 @@ class DeviceJPAGatewayTest {
 
     @Test
     void create() {
-        var entity = Device.builder()
-                .id(1L)
-                .name("name")
-                .brand("brand")
-                .build();
+        var entity = new Device(
+                1L,
+                "name",
+                "brand",
+                null);
         when(repository.save(any(Device.class))).thenReturn(entity);
 
         var device = gateway.save(new com.joel.device.domain.model.Device(

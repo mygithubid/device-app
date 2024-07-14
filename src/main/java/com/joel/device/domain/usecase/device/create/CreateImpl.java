@@ -2,16 +2,18 @@ package com.joel.device.domain.usecase.device.create;
 
 import com.joel.device.domain.usecase.device.gateway.DeviceGateway;
 import com.joel.device.domain.usecase.device.model.Device;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Component("com.joel.device.domain.usecase.device.create.CreateImpl")
-@RequiredArgsConstructor
 public class CreateImpl implements Create {
 
     private final DeviceGateway deviceGateway;
+
+    public CreateImpl(DeviceGateway deviceGateway) {
+        this.deviceGateway = deviceGateway;
+    }
 
     @Override
     public Device execute(Device device) {
