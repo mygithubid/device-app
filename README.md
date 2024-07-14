@@ -16,3 +16,5 @@ up:
     docker compose up
 
 Flyway will create the necessary tables in the database
+
+Springdoc: http://localhost:8080/v3/api-docs
