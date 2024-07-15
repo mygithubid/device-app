@@ -33,14 +33,14 @@ public class DeviceResource {
 
     @GetMapping("/{id}")
     public Device getDevice(@PathVariable("id") Long id) {
-        var user = findById.query(id);
-        if (user.isEmpty()) {
+        var device = findById.query(id);
+        if (device.isEmpty()) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "device #" + id + " not found"
             );
         }
 
-        return mapToDevice(user.orElseThrow());
+        return mapToDevice(device.orElseThrow());
     }
 
     @PostMapping

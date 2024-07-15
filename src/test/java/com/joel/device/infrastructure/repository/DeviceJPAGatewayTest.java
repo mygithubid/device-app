@@ -33,7 +33,7 @@ class DeviceJPAGatewayTest {
                 null);
         when(repository.findById(1L)).thenReturn(Optional.of(entity));
 
-        var user = gateway.findById(1L);
+        var device = gateway.findById(1L);
 
         var domain = new com.joel.device.domain.model.Device(
                 1L,
@@ -41,11 +41,11 @@ class DeviceJPAGatewayTest {
                 "brand",
                 null
         );
-        assertTrue(user.isPresent());
-        assertEquals(domain.id(), user.get().id());
-        assertEquals(domain.name(), user.get().name());
-        assertEquals(domain.brand(), user.get().brand());
-        assertEquals(domain.createdAt(), user.get().createdAt());
+        assertTrue(device.isPresent());
+        assertEquals(domain.id(), device.get().id());
+        assertEquals(domain.name(), device.get().name());
+        assertEquals(domain.brand(), device.get().brand());
+        assertEquals(domain.createdAt(), device.get().createdAt());
     }
 
     @Test
