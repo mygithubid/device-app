@@ -97,7 +97,7 @@ public class DeviceResource {
     }
 
     @GetMapping("/bybrand/{brand}")
-    public List<Device> getDevice(@PathVariable("brand") String brand) {
+    public List<Device> getDevicesByBrand(@PathVariable("brand") String brand) {
         var devices = findByBrand.query(brand);
         return devices.stream().map(this::mapToDevice).toList();
     }

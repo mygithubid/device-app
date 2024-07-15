@@ -25,7 +25,7 @@ public class DeviceJPAGateway implements DeviceGateway {
     @Override
     public Device save(Device device) {
         var entity = new com.joel.device.infrastructure.entity.Device(
-                null,
+                device.id(),
                 device.name(),
                 device.brand(),
                 device.createdAt());
