@@ -39,6 +39,14 @@ public class DeviceJPAGateway implements DeviceGateway {
         return devices.stream().map(this::toDevice).toList();
     }
 
+    @Override
+    public void delete(Long id) {
+        var device = deviceJPARepository.findById(id);
+        if (device.isPresent()) {
+            deviceJPARepository.delete(device.get());
+        }
+    }
+
     private Device toDevice(final com.joel.device.infrastructure.entity.Device entity) {
         return new Device(
                 entity.getId(),

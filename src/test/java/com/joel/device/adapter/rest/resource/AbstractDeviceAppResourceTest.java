@@ -2,6 +2,7 @@ package com.joel.device.adapter.rest.resource;
 
 import com.joel.device.app.Starter;
 import com.joel.device.domain.usecase.device.create.Create;
+import com.joel.device.domain.usecase.device.delete.Delete;
 import com.joel.device.domain.usecase.device.findall.FindAll;
 import com.joel.device.domain.usecase.device.findbybrand.FindByBrand;
 import com.joel.device.domain.usecase.device.findbyid.FindById;
@@ -31,6 +32,8 @@ public abstract class AbstractDeviceAppResourceTest {
     protected Create createDevice;
     @MockBean
     protected Update updateDevice;
+    @MockBean
+    protected Delete deleteDevice;
     @MockBean
     protected FindByBrand findByBrand;
 

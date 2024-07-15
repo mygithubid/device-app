@@ -13,4 +13,6 @@ public interface DeviceGateway {
     Device save(Device device);
 
     List<Device> findAll();
+
+    void delete(Long id);
 }

@@ -13,6 +13,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -97,6 +98,26 @@ class DeviceResourceTest extends AbstractDeviceAppResourceTest {
                         .get("/device/1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn();
+
+        int status = mvcResult
+                .getResponse()
+                .getStatus();
+        assertEquals(HttpStatus.OK.value(), status);
+        String content = mvcResult
+                .getResponse()
+                .getContentAsString();
+        assertNotNull(content);
+    }
+
+    @Test
+    void deleteSuccess() throws Exception {
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders
+                        .delete("/device/1")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        verify(deleteDevice).delete(any());
 
         int status = mvcResult
                 .getResponse()

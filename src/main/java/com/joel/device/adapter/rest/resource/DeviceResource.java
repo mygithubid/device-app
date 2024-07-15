@@ -2,6 +2,7 @@ package com.joel.device.adapter.rest.resource;
 
 import com.joel.device.adapter.rest.resource.model.Device;
 import com.joel.device.domain.usecase.device.create.Create;
+import com.joel.device.domain.usecase.device.delete.Delete;
 import com.joel.device.domain.usecase.device.findall.FindAll;
 import com.joel.device.domain.usecase.device.findbybrand.FindByBrand;
 import com.joel.device.domain.usecase.device.findbyid.FindById;
@@ -20,13 +21,21 @@ public class DeviceResource {
     private final FindAll findAll;
     private final Create create;
     private final Update update;
+    private final Delete delete;
     private final FindByBrand findByBrand;
 
-    public DeviceResource(FindById findById, FindAll findAll, Create create, Update update, FindByBrand findByBrand) {
+    public DeviceResource(
+            FindById findById,
+            FindAll findAll,
+            Create create,
+            Update update,
+            Delete delete,
+            FindByBrand findByBrand) {
         this.findById = findById;
         this.findAll = findAll;
         this.create = create;
         this.update = update;
+        this.delete = delete;
         this.findByBrand = findByBrand;
     }
 
@@ -73,6 +82,11 @@ public class DeviceResource {
             var updatedDevice = update.execute(deviceRequest);
             return mapToDevice(updatedDevice);
         }
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteDevice(@PathVariable("id") Long id) {
+        delete.delete(id);
     }
 
     @GetMapping("/list")
